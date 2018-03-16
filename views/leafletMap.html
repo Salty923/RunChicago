@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin=""></script>
+    <style>
+        #mapid { height: 400px; }
+    </style>
+</head>
+<body>
+    <div id="mapid"></div>
+</body>
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    getLocation();
+
+    function showPosition(position) {
+    console.log( "Latitude: " + position.coords.latitude + 
+     "<br>Longitude: " + position.coords.longitude);
+
+    var mymap = L.map('mapid').setView([41.88, -87.63], 10);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiYXNtaXNocmE5MyIsImEiOiJjamNta3NpOHUweGEwMzBzM3ZsN2N1Nmd4In0.Lafwt0paj0QE9tIjd31bCg'
+    }).addTo(mymap);
+
+    var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+    marker.bindPopup("<b>Hello, world!</b><br>You are here").openPopup();
+
+    }
+</script>
+</html>

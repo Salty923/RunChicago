@@ -1,4 +1,23 @@
-/* Checking link */
-/* html{
-    background: yellow;
-} */
+.white-nike-brand {
+    width: 50px;
+    height: auto
+}
+
+.nike-swoosh-main {
+    width: 250px;
+    height: auto;
+}
+
+.bg-texture {
+    /* The image used */
+    background-image: url("../images/runCHI.jpg");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 10000px black;
+}

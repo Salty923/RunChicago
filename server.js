@@ -11,19 +11,19 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-// setting up handlebars in case we decide to use it
-var exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
-}));
-app.set('view engine', 'handlebars');
+// // setting up handlebars in case we decide to use it
+// var exphbs = require('express-handlebars');
+// app.engine('handlebars', exphbs({
+//     defaultLayout: 'main'
+// }));
+// app.set('view engine', 'handlebars');
 
 // requiring our models for syncing
 var db = require('./models');
 
 // routes
-require('./routes/api-routes.js')(app);
-require('./routes/html-routes.js')(app);
+require('./routes/api-routes.js');
+require('./routes/html-routes.js');
 
 // syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(function() {

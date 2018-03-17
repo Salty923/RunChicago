@@ -33,7 +33,7 @@
 
 
 	<div class="container-contact100">
-		<div class="contact100-map" id="google_map" data-map-x="41.8781" data-map-y="-87.48" data-pin="images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+		<div class="contact100-map" id="google_map" data-map-x="41.8781" data-map-y="-87.48" data-pin="../public/assets/images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
 
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
@@ -42,17 +42,17 @@
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Please enter your username">
-					<input class="input100" type="text" name="name" placeholder="UserName">
+					<input id="user" class="input100" type="text" name="name" placeholder="UserName">
 					<span class="focus-input100"></span>
                 </div>
                 
                 <div class="wrap-input100 validate-input" data-validate="Please enter a date">
-                    <input class="input100" type="date" name="date" placeholder="date">
+                    <input id="date" class="input100" type="date" name="date" placeholder="date">
                     <span class="focus-input100"></span>
                 </div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Please enter a time">
-					<input class="input100" type="time" name="time" placeholder="time">
+					<input id="time" class="input100" type="time" name="time" placeholder="time">
 					<span class="focus-input100"></span>
                 </div>
                 
@@ -62,12 +62,12 @@
                 </div>
 
 				<div class="wrap-input100">
-					<textarea class="input100" name="message" placeholder="Your Message (optional)"></textarea>
+					<textarea id="message" class="input100" name="message" placeholder="Your Message (optional)"></textarea>
 					<span class="focus-input100"></span>
                 </div>
                 
 
-				<div class="container-contact100-form-btn">
+				<div id="submit" class="container-contact100-form-btn">
 					<button class="contact100-form-btn">
 						Submit
 					</button>
@@ -99,6 +99,7 @@
 <!--===============================================================================================-->
 	<script src="../public/assets/js/main.js"></script>
 	<script src="../public/assets/js/auto.js"></script>
+	<script src="../public/assets/js/runchi.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

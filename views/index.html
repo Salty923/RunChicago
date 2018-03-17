@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>runCHI</title>
-        <meta name="description" content="Download free Bootstrap 4 product landing page template Comply." />
+        <meta name="description" content="Find a local run!" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Bootstrap 4-->
         <link rel="stylesheet" href="../public/assets/css/bootstrap.min.css">
@@ -32,6 +32,16 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="../public/assets/css/util.css">
         <link rel="stylesheet" type="text/css" href="../public/assets/css/main.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+            crossorigin="" />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+        <style>
+            #mapid {
+                height: 550px;
+            }
+        </style>
         <!--===============================================================================================-->
         <!--Google Maps API Link-->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTQplToC7vrZZPdPirJm0clLpN3YbMW6U&libraries=places"></script>
@@ -97,86 +107,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="row mt-5 text-center">
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-ios-game-controller-b-outline icon-md"></em>
-                                </div>
-                                <h6>Unlimited Gaming</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-android-wifi icon-md"></em>
-                                </div>
-                                <h6>Built-in Wifi</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-ios-settings icon-md"></em>
-                                </div>
-                                <h6>Advanced Rate Control</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-ios-cloud-upload-outline icon-md"></em>
-                                </div>
-                                <h6>Unlimited Cloud Storage</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-ios-locked-outline icon-md"></em>
-                                </div>
-                                <h6>Highly Secure</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon-box">
-                                    <em class="ion-android-color-palette icon-md"></em>
-                                </div>
-                                <h6>Unlimited Colors</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="mapid"></div>
             </div>
         </section>
 
@@ -186,41 +117,57 @@
             <div class="container">
             
                 <form class="contact100-form validate-form">
-                    <span class="contact100-form-title">
-                        Create a Run
-                    </span>
-                
-                    <div class="wrap-input100 validate-input" data-validate="Please enter your username">
-                        <input id="user" class="input100" type="text" name="name" placeholder="UserName">
-                        <span class="focus-input100"></span>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <span class="contact100-form-title text-center">
+                                Create a Run
+                            </span>
+                            <div class="wrap-input100 validate-input" data-validate="Please enter your username">
+                                <input id="user" class="input100" type="text" name="name" placeholder="UserName">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="wrap-input100 validate-input" data-validate="Please enter a date">
+                                <input id="date" class="input100" type="date" name="date" placeholder="date">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="wrap-input100 validate-input" data-validate="Please enter a time">
+                                <input id="time" class="input100" type="time" name="time" placeholder="time">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="wrap-input100 validate-input" data-validate="Please enter location">
+                                <input id="addr" class="input100" type="text" name="place" placeholder="Location">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="wrap-input100">
+                                <input id="pace" class="input100" type="text" name="pace" placeholder="Pace">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="wrap-input100">
+                                <input id="message" class="input100" type="text" name="pace" placeholder="Message">
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            
+                            <div id="submit" class="container-contact100-form-btn">
+                                <button class="contact100-form-btn">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6">
+                            <div id="map2"></div>
+                        </div>
+                        
                     </div>
+                    
                 
-                    <div class="wrap-input100 validate-input" data-validate="Please enter a date">
-                        <input id="date" class="input100" type="date" name="date" placeholder="date">
-                        <span class="focus-input100"></span>
-                    </div>
-                
-                    <div class="wrap-input100 validate-input" data-validate="Please enter a time">
-                        <input id="time" class="input100" type="time" name="time" placeholder="time">
-                        <span class="focus-input100"></span>
-                    </div>
-                
-                    <div class="wrap-input100 validate-input" data-validate="Please enter location">
-                        <input id="addr" class="input100" type="text" name="place" placeholder="Location">
-                        <span class="focus-input100"></span>
-                    </div>
-                
-                    <div class="wrap-input100">
-                        <textarea id="message" class="input100" name="message" placeholder="Your Message (optional)"></textarea>
-                        <span class="focus-input100"></span>
-                    </div>
-                
-                
-                    <div id="submit" class="container-contact100-form-btn">
-                        <button class="contact100-form-btn">
-                            Submit
-                        </button>
-                    </div>
+                        
                 </form>
             </div>
         </section>
@@ -258,6 +205,14 @@
                         <p>Back-End Guru</p>
                     </div>
                 </div>
+
+                <!-- emojis fill area -->
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img src="../public/assets/images/runners.gif" alt='Runners' class="img-team img-fluid" />
+                </div>
+                
+                  
             </div>
         </section>
 
@@ -375,5 +330,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
         <script src="../public/assets/js/scripts.js"></script>
+        <script src="../public/assets/js/leaflet.js"></script>
+        <script>
+            var map = new google.maps.Map(document.getElementById('map2'), {
+                center: { lat: 41.8787, lng: -87.48 },
+                zoom: 8
+            });
+        </script>
     </body>
 </html>

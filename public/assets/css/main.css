@@ -223,8 +223,8 @@ iframe {
   width: 100%;
   position: relative;
   background-color: #fff;
-  border-radius: 20px;
-  margin-bottom: 30px;
+  border-radius: 30px;
+  margin-bottom: 40px;
 }
 
 .input100 {
@@ -240,7 +240,7 @@ iframe {
 
 /*---------------------------------------------*/
 input.input100 {
-  height: 62px;
+  height: 70px;
   padding: 0 20px 0 23px;
 }
 

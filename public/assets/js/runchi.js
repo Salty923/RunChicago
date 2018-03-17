@@ -1,3 +1,4 @@
+
 var marker;
 var address;
 
@@ -5,7 +6,7 @@ $(document).ready(function () {
 
     initialize();
 
-    $('#submit').on('click',function () {
+    $('.submit').on('click',function () {
         event.preventDefault();
         var user = $('#user').val();
         var date = $('#date').val().trim();
@@ -72,6 +73,11 @@ $(document).ready(function () {
             } else {
                 alert('Please try a different address.');
             };
+        });
+      // AJAX post data
+        $.post('/api/runs', userData, function (data) {
+            console.log("Run added");
+            console.log(data);
         });
 
     }); 

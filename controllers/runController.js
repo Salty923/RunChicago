@@ -1,7 +1,5 @@
 // importing models to use their database functions
-var runGroup = require('../models/runGroup.js');
-var user = require('../models/user.js');
-
+var db = require('../models/')
 var path = require('path');
 
 // remember to change file names once updated info is available
@@ -12,7 +10,23 @@ module.exports = function (app) {
 
     
     app.get('/createrun', function (req, res) {
-        res.sendFile(path.join(__dirname, '../views/createruncopy.html'));
+        res.sendFile(path.join(__dirname, '../views/createrun.html'));
+    })
+
+    app.post('/api/runs', function (req, res) {
+        console.log(req);
+        db.RunGroup.create({
+            "date": req.body.date,
+            'time': req.body.time,
+            'location': req.body.address,
+            'level': req.body.user, 
+            'runType': req.body.message,
+            'distance': 10,
+            'pace': 'test',
+            'recurringGroup': false
+        }).then(function(result) {
+            console.log(result);
+        })
     })
 }
 

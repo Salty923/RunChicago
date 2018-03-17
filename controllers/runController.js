@@ -4,10 +4,11 @@ var user = require('../models/user.js');
 
 var path = require('path');
 
-module.exports = (app) => {
+module.exports = function (app) {
     app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '../views/index2_DoNotDelete.html'));
     })
+
 }
 
 

@@ -11,6 +11,30 @@
         <!--icons-->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
         <link rel="stylesheet" href="../public/assets/css/style.css">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="../public/assets/images/icons/favicon.ico" />
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/fonts/iconic/css/material-design-iconic-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/animate/animate.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/animsition/css/animsition.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/select2/select2.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/vendor/daterangepicker/daterangepicker.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="../public/assets/css/main.css">
+        <!--===============================================================================================-->
+        <!--Google Maps API Link-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTQplToC7vrZZPdPirJm0clLpN3YbMW6U&libraries=places"></script>
     </head>
     <body>
         <!--header-->
@@ -158,65 +182,46 @@
 
         <!--pricing-->
         <section class="bg-light" id="pricing">
+            
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
-                        <h2 class="text-primary">Add a Running Group!</h2>
-                        <p class="lead pt-3">
-                            Fill out the details below to add your own running group.
-                        </p>
+            
+                <form class="contact100-form validate-form">
+                    <span class="contact100-form-title">
+                        Create a Run
+                    </span>
+                
+                    <div class="wrap-input100 validate-input" data-validate="Please enter your username">
+                        <input id="user" class="input100" type="text" name="name" placeholder="UserName">
+                        <span class="focus-input100"></span>
                     </div>
-                </div>
-                <div class="row d-md-flex mt-4 text-center">
-                    <div class="col-sm-4 mt-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title pt-4 text-orange">Basic</h5>
-                                <h3 class="card-title text-primary pt-4">FREE</h3>
-                                <p class="card-text text-muted pb-3 border-bottom">per month</p>
-                                <ul class="list-unstyled pricing-list">
-                                    <li>Free setup</li>
-                                    <li>100MB storage</li>
-                                    <li>1GB bandwidth</li>
-                                    <li>Basic support</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary btn-radius">Order Now</a>
-                            </div>
-                        </div>
+                
+                    <div class="wrap-input100 validate-input" data-validate="Please enter a date">
+                        <input id="date" class="input100" type="date" name="date" placeholder="date">
+                        <span class="focus-input100"></span>
                     </div>
-                    <div class="col-sm-4 mt-0 wow fadeIn">
-                        <div class="card pt-4 pb-4">
-                            <div class="card-body">
-                                <h5 class="card-title pt-4 text-orange">Standard <small class="badge bg-primary small-xs">Popular</small></h5>
-                                <h3 class="card-title text-primary pt-4"><sup>$</sup> 9.99</h3>
-                                <p class="card-text text-muted pb-3 border-bottom">per month</p>
-                                <ul class="list-unstyled pricing-list">
-                                    <li>Free setup</li>
-                                    <li>5GB storage</li>
-                                    <li>Unlimited bandwidth</li>
-                                    <li>Priority support</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary btn-radius">Order Now</a>
-                            </div>
-                        </div>
+                
+                    <div class="wrap-input100 validate-input" data-validate="Please enter a time">
+                        <input id="time" class="input100" type="time" name="time" placeholder="time">
+                        <span class="focus-input100"></span>
                     </div>
-                    <div class="col-sm-4 mt-4 wow fadeIn">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title pt-4 text-orange">Advanced</h5>
-                                <h3 class="card-title text-primary pt-4"><sup>$</sup> 19.99</h3>
-                                <p class="card-text text-muted pb-3 border-bottom">per month</p>
-                                <ul class="list-unstyled pricing-list">
-                                    <li>Free setup</li>
-                                    <li>Unlimited storage</li>
-                                    <li>Unlimited bandwidth</li>
-                                    <li>24/7 support</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary btn-radius">Order Now</a>
-                            </div>
-                        </div>
+                
+                    <div class="wrap-input100 validate-input" data-validate="Please enter location">
+                        <input id="addr" class="input100" type="text" name="place" placeholder="Location">
+                        <span class="focus-input100"></span>
                     </div>
-                </div>
+                
+                    <div class="wrap-input100">
+                        <textarea id="message" class="input100" name="message" placeholder="Your Message (optional)"></textarea>
+                        <span class="focus-input100"></span>
+                    </div>
+                
+                
+                    <div id="submit" class="container-contact100-form-btn">
+                        <button class="contact100-form-btn">
+                            Submit
+                        </button>
+                    </div>
+                </form>
             </div>
         </section>
 

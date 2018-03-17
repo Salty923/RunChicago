@@ -13,8 +13,17 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, '../views/createrun.html'));
     })
 
+    app.get('/groupruns', function(req, res) {
+        db.RunGroup.findAll({}) (function(data) {
+            var runsObject = { RunGroups: data };
+            res.json(runsObject);
+            res.sendFile(path.join(__dirname, '..views/findrun.html'));
+            console.log(runsObject);
+        })
+    });
+
     app.post('/api/runs', function (req, res) {
-        console.log(req);
+        console.log(req.body);
         db.RunGroup.create({
             "date": req.body.date,
             'time': req.body.time,
@@ -28,6 +37,8 @@ module.exports = function (app) {
             console.log(result);
         })
     })
+
+
 }
 
 

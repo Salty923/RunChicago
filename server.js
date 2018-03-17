@@ -1,11 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var path = require('path');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 // serve static content from the public directory
-app.use(express.static('public'));
+app.use(express.static("public"));
+
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -21,9 +22,8 @@ app.use(bodyParser.urlencoded({
 // requiring our models for syncing
 var db = require('./models');
 
-// routes
-require('./routes/api-routes.js');
-require('./routes/html-routes.js');
+var routes = require('./controllers/runController.js');
+routes(app);
 
 // syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(function() {

@@ -1,4 +1,3 @@
-
 var marker;
 var address;
 
@@ -6,14 +5,24 @@ $(document).ready(function () {
 
     initialize();
 
-    $('.submit').on('click',function () {
+    $('.submit').on('click', function () {
         event.preventDefault();
-        var user = $('#user').val();
-        var date = $('#date').val().trim();
-        var time = $('#time').val().trim();
-            address =$('#addr').val().trim();
-        //var pace= $('#pace').val().trim();
-        var message = $('#message').val().trim();
+
+        var userData = {
+            user: $('#user').val(),
+            date: $('#date').val().trim(),
+            time: $('#time').val().trim(),
+            address: $('#addr').val().trim(),
+            //var pace= $('#pace').val().trim(),
+            message: $('#message').val().trim()
+        };
+
+        // AJAX post data
+        $.post('/api/runs', userData, function (data) {
+            console.log("Run added");
+            console.log(data);
+        });
+
         geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -65,19 +74,14 @@ $(document).ready(function () {
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
-                marker.addListener('click', function () {
-                    infowindow.open(map, marker);
-                });
+                //marker.addListener('click', function () {
+                 //   infowindow.open(map, marker);
+                //});
 
 
             } else {
                 alert('Please try a different address.');
             };
-        });
-      // AJAX post data
-        $.post('/api/runs', userData, function (data) {
-            console.log("Run added");
-            console.log(data);
         });
 
     }); 

@@ -14,12 +14,15 @@ module.exports = function (app) {
     })
 
     app.get('/groupruns', function(req, res) {
-        db.RunGroup.findAll({}) (function(data) {
+        res.sendFile(path.join(__dirname, '..views/findrun.html'));
+        
+        db.RunGroup.findAll() (function(data) {
             var runsObject = { RunGroups: data };
+            
             res.json(runsObject);
-            res.sendFile(path.join(__dirname, '..views/findrun.html'));
             console.log(runsObject);
         })
+
     });
 
     app.post('/api/runs', function (req, res) {

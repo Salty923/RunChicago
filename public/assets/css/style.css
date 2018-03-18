@@ -23,8 +23,17 @@
 }
 
 #findMap {
-  height: 600px;
+  /* height: 600px; */
   width: 100%;
   margin-bottom: 30px;
   backface-visibility: yellow;
+}
+
+.run_list{
+    background:#ddd;
+    width: 30%;
+    float: left;
+    margin: 10px;
+    border: solid 1px grey;
+    border-radius: 5px;
 }

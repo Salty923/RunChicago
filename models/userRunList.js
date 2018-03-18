@@ -9,5 +9,5 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         }
     });
-    return User;
+    return UserRunList;
 };

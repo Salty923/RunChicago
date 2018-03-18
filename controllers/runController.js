@@ -6,9 +6,15 @@ var path = require('path');
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        db.RunGroup.findAll({}).then(function(result){
-            console.log(`This is the result: ${result}`);
-            res.sendFile(path.join(__dirname, '../views/index.html'));
+        res.sendFile(path.join(__dirname, '../views/index.html'));
+    });
+
+    app.post('/api/runlist', function (req, res) {
+        db.RunGroup.findAll({
+            //space is just for my own readability
+        }).then(function(result) {
+            console.log(result);
+            res.json(result);
         });
     });
 

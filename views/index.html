@@ -332,7 +332,20 @@
         <script src="assets/js/auto.js"></script>
         <script src="assets/js/runchi.js"></script>
         <script src="assets/js/findRunMap.js"></script>
+
+    
+    <script>
+        $(document).ready(function () {
+            let currentURL = window.location.origin;
+            
+            $.post(currentURL + '/api/runlist', function(data) {
+                console.log(data);
+            });
+        });
+    </script>
+
         <script src="assets/js/groupList.js"></script>
+
 
     </body>
 </html>

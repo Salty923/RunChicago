@@ -1,11 +1,11 @@
 // var marker;
 // var address;
 
-$(document).ready(function () {
+//$(document).ready(function () {
 
     // initialize();
 
-    $('.submit').on('click', function () {
+    $('#submit-run').on('click', function () {
         event.preventDefault();
 
         var userData = {
@@ -13,7 +13,7 @@ $(document).ready(function () {
             date: $('#date').val().trim(),
             time: $('#time').val().trim(),
             address: $('#addr').val().trim(),
-            //var pace= $('#pace').val().trim(),
+            pace: $('#pace').val().trim(),
             message: $('#message').val().trim()
         };
 
@@ -86,8 +86,8 @@ $(document).ready(function () {
         // });
 
     }); 
-    console.log("ready!");
-});
+    //console.log("ready!");
+//});
 
 
 

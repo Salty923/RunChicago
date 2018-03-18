@@ -7,7 +7,7 @@ module.exports = function (app) {
 
     app.get('/', function (req, res) {
         db.RunGroup.findAll({}).then(function(result){
-            console.log(result);
+            console.log(`This is the result: ${result}`);
             res.sendFile(path.join(__dirname, '../views/index.html'));
         });
     });
@@ -24,10 +24,9 @@ module.exports = function (app) {
             'pace': 'test',
             'recurringGroup': false
         }).then(function(result) {
-            console.log(result);
+            console.log(result.body);
         })
     })
-
 
 }
 

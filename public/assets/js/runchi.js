@@ -1,5 +1,4 @@
-    
-    $('#submit-run').on('click', function () {
+   $('#submit-run').on('click', function () {
         event.preventDefault();
 
         var userData = {

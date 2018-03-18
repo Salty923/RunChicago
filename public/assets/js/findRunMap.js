@@ -5,8 +5,9 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(41.8781, -87.6298);
     var mapOptions = {
-        zoom: 12,
-        center: latlng
+        zoom: 13,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.HYBRID
     }
     map = new google.maps.Map(document.getElementById('findMap'), mapOptions);
 };

@@ -23,6 +23,10 @@ module.exports = function (sequelize, DataTypes) {
         reminder: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
+        },
+        points: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     });
     return User;

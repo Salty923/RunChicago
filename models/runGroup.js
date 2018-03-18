@@ -34,6 +34,14 @@ module.exports = function (sequelize, DataTypes) {
         recurringGroup: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
+        },
+        createdBy: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        points: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     });
     return RunGroup;

@@ -37,3 +37,7 @@
     border: solid 1px grey;
     border-radius: 5px;
 }
+
+#list{
+    min-height: 600px;
+}

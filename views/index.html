@@ -110,9 +110,34 @@
                 
                 <div class="row">
                     
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div id="findMap"></div>
-                        <div id="runList"></div>
+                    <div id="list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!-- <div id="findMap"></div>
+                        <div id="runList"></div> -->    
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Group</th>
+                                    <th>Place</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Runners</th>
+                                    <th>Join!</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td>James Smith</td>
+                                    <td>251 E Huron St, Chicago, IL 60611</td>
+                                    <td>june 5</td>
+                                    <td>6pm</td>
+                                    <td>10</td>
+                                    <td>
+                                    <button type="button" class="join btn btn-sm btn-success">Join</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
                     </div>
                     
                 </div>
@@ -342,21 +367,33 @@
                 //var data = JSON.parse(data);
                 console.log(data);
                 var runGroups = data;
-                var runList = $('#runList');
+                var runList = $('#tableBody');
 
                 for (let i = 0; i < runGroups.length; i++) {
-                    var groupDiv = $(`<div class='run_list'></div>`);
-                    var groupName = $(`<h5> Run Group Name: ${runGroups[i].name} </h5>`);
-                    var runLocation = $(`<h5> Location: ${runGroups[i].location}</h5>`);
-                    var numRunners = $(`<h5> Number of Runners: ${runGroups[i].runners}</h5>`)
+                    var groupRow = $(`<tr></tr>`);
+                    var groupName = $(`<td>${runGroups[i].level}</td>`);
+                    var runLocation = $(`<td>${runGroups[i].location}</td>`);
+                    var date = $(`<td>${runGroups[i].date}</td>`);
+                    var time = $(`<td>${runGroups[i].time}</td>`);
+                    var numRunners = $(`<td>${runGroups[i].runners}</td>`);
+                    var button = $(`<td><button type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
-                    runList.append(groupDiv);
-                    groupDiv.append(groupName);
-                    groupDiv.append(runLocation);
-                    groupDiv.append(numRunners);
+                    runList.append(groupRow);
+                    groupRow.append(groupName);
+                    groupRow.append(runLocation);
+                    groupRow.append(date);
+                    groupRow.append(time);
+                    groupRow.append(numRunners);
+                    groupRow.append(button);
 
                 }
             });
+
+            // $('#submit-run').on('click',function () {
+            //     runList.empty();
+            //     alert('clicked');
+            // })
+
         });
     </script>
 

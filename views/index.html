@@ -370,13 +370,14 @@
                 var runList = $('#tableBody');
 
                 for (let i = 0; i < runGroups.length; i++) {
+                    var id = runGroups[i].id;
                     var groupRow = $(`<tr></tr>`);
                     var groupName = $(`<td>${runGroups[i].level}</td>`);
                     var runLocation = $(`<td>${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
                     var numRunners = $(`<td>${runGroups[i].runners}</td>`);
-                    var button = $(`<td><button type="button" class="join btn btn-sm btn-success">Join</button></td>`);
+                    var button = $(`<td><button data-val='${id}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
                     groupRow.append(groupName);
@@ -389,12 +390,12 @@
                 }
             });
 
-            // $('#submit-run').on('click',function () {
-            //     runList.empty();
-            //     alert('clicked');
-            // })
-
         });
+
+        $('body').on('click', '.join',function () {
+            alert($(this).data('val'));
+        })
+
     </script>
 
         <script src="assets/js/groupList.js"></script>

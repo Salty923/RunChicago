@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         createdBy: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         points: {
             type: DataTypes.INTEGER,

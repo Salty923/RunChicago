@@ -339,7 +339,23 @@
             let currentURL = window.location.origin;
             
             $.post(currentURL + '/api/runlist', function(data) {
+                //var data = JSON.parse(data);
                 console.log(data);
+                var runGroups = data;
+                var runList = $('#runList');
+
+                for (let i = 0; i < runGroups.length; i++) {
+                    var groupDiv = $(`<div class='run_list'></div>`);
+                    var groupName = $(`<h5> Run Group Name: ${runGroups[i].name} </h5>`);
+                    var runLocation = $(`<h5> Location: ${runGroups[i].location}</h5>`);
+                    var numRunners = $(`<h5> Number of Runners: ${runGroups[i].runners}</h5>`)
+
+                    runList.append(groupDiv);
+                    groupDiv.append(groupName);
+                    groupDiv.append(runLocation);
+                    groupDiv.append(numRunners);
+
+                }
             });
         });
     </script>

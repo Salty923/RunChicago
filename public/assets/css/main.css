@@ -79,7 +79,6 @@ p {
 	font-family: SourceSansPro-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
 	margin: 0px;
 }
 
@@ -208,9 +207,9 @@ iframe {
 
 .contact100-form-title {
   display: block;
-  font-family: SourceSansPro-Bold;
+  font-family: Inherit;
   font-size: 30px;
-  color: #333333;
+  color: #d81b60;
   line-height: 1.2;
   text-align: left;
   padding-bottom: 34px;
@@ -231,7 +230,7 @@ iframe {
   display: block;
   width: 100%;
   background: transparent;
-  font-family: SourceSansPro-Bold;
+  font-family: Inherit;
   font-size: 16px;
   color: #4b2354;
   line-height: 1.2;
@@ -307,26 +306,26 @@ textarea.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 42px;
-  background-color: #bd59d4;
+  background-color: #d81b60;
   border-radius: 21px;
 
-  font-family: JosefinSans-Bold;
+  font-family: Inherit;
+  font-style: bold;
   font-size: 14px;
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-  padding-top: 5px;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.5);
-  -moz-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.5);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.5);
-  -o-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.5);
-  -ms-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.5);
+  box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -moz-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -webkit-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -o-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -ms-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
 }
 
 .contact100-form-btn:hover {

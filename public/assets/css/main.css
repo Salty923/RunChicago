@@ -52,7 +52,7 @@ body, html {
 /*---------------------------------------------*/
 a {
 	font-family: SourceSansPro-Regular;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -72,7 +72,8 @@ a:hover {
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+  margin: 0px;
+  font-family: SourceSansPro-Regular;
 }
 
 p {

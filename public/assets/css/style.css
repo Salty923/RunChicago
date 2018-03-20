@@ -1,5 +1,5 @@
 .white-nike-brand {
-    width: 50px;
+    width: 75px;
     height: auto
 }
 
@@ -13,7 +13,7 @@
     background-image: url("../images/runCHI.jpg");
   
     /* Full height */
-    height: 100%; 
+    height: 100%;
   
     /* Center and scale the image nicely */
     background-position: center;

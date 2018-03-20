@@ -33,4 +33,11 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.users = require('./user.js')(sequelize, Sequelize);
+db.runGroups = require('./runGroup.js')(sequelize, Sequelize);
+
+// sequelize association to join database tables 
+db.users.hasMany(db.runGroups);
+db.runGroups.hasMany(db.users);
+
 module.exports = db;

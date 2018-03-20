@@ -449,13 +449,33 @@
         });
 
         $('body').on('click', '.join',function () {
+            // id of the run group
+            var id = $(this).data('val');
             alert($(this).data('val'));
+            
+            // not sure how to grab numRun
+            var newRunners = {
+                numRun: $(this).numRunners++
+            }
+
+            console.log(newRunners);
+
+            // send the PUT request
+            $.ajax('api/numRun/' + id, {
+                type: 'PUT',
+                data: newRunners
+            }).then(
+                function() {
+                    console.log('added runner');
+                    //location.reload(); 
+                    // to get an updated list
+                }
+            )
+            
         })
 
     </script>
-
-        <script src="assets/js/groupList.js"></script>
-
-
+        <script src="assets/js/groupList.js">
+    </script>
     </body>
 </html>

@@ -329,12 +329,12 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover {
-  background-color: #4b2354;
-  box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
-  -moz-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
-  -o-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
-  -ms-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
+  background-color: #303030;
+  box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -moz-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -webkit-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -o-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
+  -ms-box-shadow: 0 10px 30px 0px rgba(79, 77, 80, 0.5);
 }
 
 /*------------------------------------------------------------------

@@ -418,6 +418,7 @@
     <script>
         $(document).ready(function () {
             let currentURL = window.location.origin;
+            let numRunners;
             
             $.post(currentURL + '/api/runlist', function(data) {
                 //var data = JSON.parse(data);
@@ -432,7 +433,7 @@
                     var runLocation = $(`<td>${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
-                    var numRunners = $(`<td>${runGroups[i].runners}</td>`);
+                    numRunners = $(`<td>${runGroups[i].runners}</td>`);
                     var button = $(`<td><button data-val='${id}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
@@ -458,7 +459,7 @@
                 numRun: $(this).numRunners++
             }
 
-            console.log(newRunners);
+            console.log(numRunners);
 
             // send the PUT request
             $.ajax('api/numRun/' + id, {

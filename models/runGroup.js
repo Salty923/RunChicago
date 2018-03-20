@@ -31,6 +31,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        numRun: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 1
+        },
         recurringGroup: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

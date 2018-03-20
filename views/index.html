@@ -81,15 +81,16 @@
         <!--main section-->
         <section class="bg-texture hero" id="main">
             <div class="container">
-                <div class="row"><br><br></div>
-                <div class="row d-md-flex brand">
-                    <div class="col-lg-6 col-lg-offset-3 text-center text-white wow fadeIn">
+                <!-- <div class="row"><br><br></div> -->
+                <div class="row brand d-flex">
+                    <div class="col-lg-6 text-center text-white wow fadeIn">
+                        <br><br><br><br><br><br>
                         <img class="img-fluid mx-auto d-block nike-swoosh-main" src="assets/images/white-nike-swoosh.png"/>
                         <h2>runCHI</h2>
                         <h3>Find that Perfect Run.</h3>
                     </div>
                     <!-- sign up/login section -->
-            <div class="form col-lg-6 wow fadeIn">
+            <div class="form col-lg-6 wow fadeIn ml-auto">
                 <ul class="tab-group">
                   <li class="tab active"><a href="#signup">Sign Up</a></li>
                   <li class="tab"><a href="#login">Log In</a></li>
@@ -106,14 +107,14 @@
                         <label>
                           First Name<span class="req">*</span>
                         </label>
-                        <input id="firstName" type="text" required autocomplete="off" />
+                        <input type="text" required autocomplete="off" />
                       </div>
                   
                       <div class="field-wrap">
                         <label>
                           Last Name<span class="req">*</span>
                         </label>
-                        <input id="lastName" type="text"required autocomplete="off"/>
+                        <input type="text"required autocomplete="off"/>
                       </div>
                     </div>
           
@@ -121,17 +122,17 @@
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input id="newEmail" type="email"required autocomplete="off"/>
+                      <input type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Set A Password<span class="req">*</span>
                       </label>
-                      <input id="newPassword" type="password"required autocomplete="off"/>
+                      <input type="password"required autocomplete="off"/>
                     </div>
                     
-                    <button id="signUpButton" type="submit" class="button button-block get-started"/>Get Started</button>
+                    <button type="submit" class="button button-block get-started"/>Get Started</button>
                     
                     </form>
           
@@ -146,19 +147,19 @@
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input id="logEmail" type="email"required autocomplete="off"/>
+                      <input type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Password<span class="req">*</span>
                       </label>
-                      <input id="logPassword" type="password"required autocomplete="off"/>
+                      <input type="password"required autocomplete="off"/>
                     </div>
                     
                     <p class="forgot"><a href="#">Forgot Password?</a></p>
                     
-                    <button id="loginButton" class="button button-block get-started"/>Log In</button>
+                    <button class="button button-block get-started"/>Log In</button>
                     
                     </form>
           
@@ -431,7 +432,7 @@
                     var runLocation = $(`<td>${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
-                    var numRunners = $(`<td>${runGroups[i].numRun}</td>`);
+                    var numRunners = $(`<td>${runGroups[i].runners}</td>`);
                     var button = $(`<td><button data-val='${id}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
@@ -448,14 +449,12 @@
         });
 
         $('body').on('click', '.join',function () {
-            var currentRunners = $(this).data('val');
-            var newRunners = currentRunners +1;
-            alert(newRunners);
-        });
+            alert($(this).data('val'));
+        })
 
     </script>
 
-        <script src="assets/js/signUp.js"></script>
+        <script src="assets/js/groupList.js"></script>
 
 
     </body>

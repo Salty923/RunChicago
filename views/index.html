@@ -106,14 +106,14 @@
                         <label>
                           First Name<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" />
+                        <input id="firstName" type="text" required autocomplete="off" />
                       </div>
                   
                       <div class="field-wrap">
                         <label>
                           Last Name<span class="req">*</span>
                         </label>
-                        <input type="text"required autocomplete="off"/>
+                        <input id="lastName" type="text"required autocomplete="off"/>
                       </div>
                     </div>
           
@@ -121,17 +121,17 @@
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input type="email"required autocomplete="off"/>
+                      <input id="newEmail" type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Set A Password<span class="req">*</span>
                       </label>
-                      <input type="password"required autocomplete="off"/>
+                      <input id="newPassword" type="password"required autocomplete="off"/>
                     </div>
                     
-                    <button type="submit" class="button button-block get-started"/>Get Started</button>
+                    <button id="signUpButton" type="submit" class="button button-block get-started"/>Get Started</button>
                     
                     </form>
           
@@ -146,19 +146,19 @@
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input type="email"required autocomplete="off"/>
+                      <input id="logEmail" type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Password<span class="req">*</span>
                       </label>
-                      <input type="password"required autocomplete="off"/>
+                      <input id="logPassword" type="password"required autocomplete="off"/>
                     </div>
                     
                     <p class="forgot"><a href="#">Forgot Password?</a></p>
                     
-                    <button class="button button-block get-started"/>Log In</button>
+                    <button id="loginButton" class="button button-block get-started"/>Log In</button>
                     
                     </form>
           
@@ -448,12 +448,14 @@
         });
 
         $('body').on('click', '.join',function () {
-            alert($(this).data('val'));
-        })
+            var currentRunners = $(this).data('val');
+            var newRunners = currentRunners +1;
+            alert(newRunners);
+        });
 
     </script>
 
-        <script src="assets/js/groupList.js"></script>
+        <script src="assets/js/signUp.js"></script>
 
 
     </body>

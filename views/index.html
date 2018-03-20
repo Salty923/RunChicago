@@ -400,7 +400,8 @@
                     var runLocation = $(`<td>${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
-                    numRun = $(`<td>${runGroups[i].numRun}</td>`);
+                    numRun = runGroups[i].numRun;
+                    var runShow = $(`<td>${runGroups[i].numRun}</td>`)
                     var button = $(`<td><button data-val='${id}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
@@ -408,10 +409,11 @@
                     groupRow.append(runLocation);
                     groupRow.append(date);
                     groupRow.append(time);
-                    groupRow.append(numRun);
+                    groupRow.append(runShow);
                     groupRow.append(button);
 
-                    console.log(numRun.length);
+                    
+                    console.log(numRun);
 
                 }
             });
@@ -424,9 +426,9 @@
             alert($(this).data('val'));
             
             // not sure how to grab numRun
-            var newRunners = numRun.length++;
+            var newRunners = numRun++;
 
-            console.log(numRun.length);
+            console.log(numRun);
             // send the PUT request
             $.ajax('api/numRun/' + id, {
                 type: 'PUT',

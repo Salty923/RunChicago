@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.post('/api/runlist', function (req, res) {
         db.RunGroup.findAll({
             //space is just for my own readability
-        }).then(function(result) {
+        }).then(function (result) {
             console.log(result);
             res.json(result);
         });
@@ -24,16 +24,27 @@ module.exports = function (app) {
             "date": req.body.date,
             'time': req.body.time,
             'location': req.body.address,
-            'level': req.body.user, 
+            'level': req.body.user,
             'runType': req.body.message,
             'distance': 10,
             'pace': 'test',
             'recurringGroup': false
-        }).then(function(result) {
+        }).then(function (result) {
             console.log(result.body);
         })
-    })
+    });
+
+    app.put("api/numRun/:id", function (req, res) {
+        db.RunGroup.update(
+            {
+                numRun: sequelize.literal('numRun')+1
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (runGroup) {
+            res.json(runGroup);
+        });
+    });
 
 }
-
-

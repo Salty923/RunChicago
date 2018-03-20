@@ -34,16 +34,20 @@ module.exports = function (app) {
         })
     });
 
+    // put route -> back to index
     app.put("api/numRun/:id", function (req, res) {
         db.RunGroup.update(
             {
-                numRun: sequelize.literal('numRun')+1
+                numRun: request.params.newRunners
             }, {
                 where: {
-                    id: req.body.id
+                    id: req.params.id
                 }
-            }).then(function (runGroup) {
-            res.json(runGroup);
+            }).then(function (result) {
+            // wrapper for orm.js that using MySQL update callback will return a log to console,
+            // render back to index with handle
+            console.log(result);
+            res.json('/');
         });
     });
 

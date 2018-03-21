@@ -420,7 +420,6 @@
             $(this).toggleClass('join, btn-success');
             $(this).html('Lets Run!');
             
-            // not sure how to grab numRun
             var newRunners = numRun+1;
 
             console.log(numRun);
@@ -435,6 +434,19 @@
                     // to get an updated list
                 }
             )
+
+            $.ajax('/api/userRunList', {
+                type: 'POST',
+                data: {
+                    userID: "test", // need to grab user ID here. 
+                    runGroupId: id // ID of the run group
+                }
+            }).then(
+                function() {
+                    console.log('push user ID and run ID');
+                }
+            );
+
         })
 
     </script>

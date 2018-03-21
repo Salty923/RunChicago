@@ -1,6 +1,16 @@
 // importing models to use their database functions
 var db = require('../models/')
 var path = require('path');
+var Sequelize = require('sequelize');
+var basename  = path.basename(__filename);
+var env       = process.env.NODE_ENV || 'development';
+var config    = require(__dirname + '/../config/config.json')[env];
+
+if (config.use_env_variable) {
+    var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  } else {
+    var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  }
 
 // remember to change file names once updated info is available
 module.exports = function (app) {
@@ -76,20 +86,20 @@ module.exports = function (app) {
     });
 
     app.get('/api/usersRuns/:id', function (req, res) {
-        var query = 'SELECT Users.id, Users.email, RunGroups.id, RunGroups.location FROM Users JOIN UserRunLists ON UserRunLists.userId = Users.id JOIN RunGroups ON UserRunlists.runGroupId = RunGroups.id WHERE Users.id = :id ;'
-        selequize.query(query, {
+        var query = `SELECT RunGroups.id, RunGroups.location, RunGroups.level, RunGroups.runType, RunGroups.distance, RunGroups.pace, RunGroups.numRun FROM Users JOIN UserRunLists ON UserRunLists.userId = Users.id JOIN RunGroups ON UserRunlists.runGroupId = RunGroups.id WHERE Users.id = ${req.params.id} ;`
+        sequelize.query(query, {
             type: sequelize.QueryTypes.SELECT
         }).then(allRuns => {
-            console.log(allRuns);
+            res.json(allRuns);
         });
     });
 
     app.get('/api/runsUsers/:id', function (req, res) {
-        var query = 'SELECT RunGroups.id, RunGroups.location, Users.id, Users.name FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunlists.userId = Users.id WHERE RunGroups.id = :id ;'
-        selequize.query(query, {
+        var query = `SELECT Users.id, Users.firstName, Users.LastName, Users.email, Users.points FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunlists.userId = Users.id WHERE RunGroups.id = ${req.params.id} ;`
+        sequelize.query(query, {
             type: sequelize.QueryTypes.SELECT
         }).then(allRunners => {
-            console.log(allRunners);
+            res.json(allRunners);
         });
     });
 

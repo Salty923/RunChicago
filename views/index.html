@@ -423,7 +423,7 @@
             var newRunners = numRun+1;
 
             console.log(numRun);
-            // send the PUT request
+            //send the PUT request
             $.ajax('/api/numRun/' + id, {
                 type: 'PUT',
                 data: { newRunners }
@@ -435,12 +435,14 @@
                 }
             )
 
+            var runList = {
+                userID: 1, // need to grab user ID here. 
+                runGroupId: id
+            };
+
             $.ajax('/api/userRunList', {
                 type: 'POST',
-                data: {
-                    userID: "test", // need to grab user ID here. 
-                    runGroupId: id // ID of the run group
-                }
+                data: runList
             }).then(
                 function() {
                     console.log('push user ID and run ID');

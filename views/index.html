@@ -414,7 +414,9 @@
         $('body').on('click', '.join',function () {
             // id of the run group
             var id = $(this).data('val');
-            alert($(this).data('val'));
+            $(this).toggleClass('joined, btn-warning');
+            $(this).toggleClass('join, btn-success');
+            $(this).html('Lets Run!');
             
             // not sure how to grab numRun
             var newRunners = numRun+1;
@@ -431,7 +433,6 @@
                     // to get an updated list
                 }
             )
-            
         })
 
     </script>

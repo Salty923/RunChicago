@@ -23,9 +23,9 @@ module.exports = function (app) {
         db.RunGroup.create({
             "date": req.body.date,
             'time': req.body.time,
-            'location': req.body.address,
-            'level': req.body.user,
-            'runType': req.body.message,
+            'location': req.body.location,
+            'level': req.body.level,
+            'runType': req.body.runType,
             'distance': 10,
             'pace': 'test',
             'recurringGroup': false
@@ -34,20 +34,62 @@ module.exports = function (app) {
         })
     });
 
+    app.post('/api/users', function (req, res) {
+        console.log(req.body);
+        db.User.create({
+            'firstName': req.body.firstName,
+            'LastName': req.body.LastName,
+            'email': req.body.email,
+            'password': req.body.password,
+            'reminder': req.body.reminder,
+            'points': 10
+        }).then(function (result) {
+            console.log(result.body);
+        })
+    });
+
+
+    app.post('/api/userRunList', function (req, res) {
+        console.log(req.body);
+        db.UserRunList.create({
+            'userId': req.body.userId,
+            'runGroupId': req.body.runGroupId
+        }).then(function (result) {
+            console.log(result.body);
+        })
+    });
+
     // put route -> back to index
-    app.put("api/numRun/:id", function (req, res) {
-        db.RunGroup.update(
-            {
-                numRun: request.params.newRunners
-            }, {
-                where: {
-                    id: req.params.id
-                }
-            }).then(function (result) {
+    app.put("/api/numRun/:id", function (req, res) {
+        db.RunGroup.update({
+            numRun: request.params.newRunners
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (result) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
             console.log(result);
             res.json('/');
+        });
+    });
+
+    app.get('/api/usersRuns/:id', function (req, res) {
+        var query = 'SELECT Users.id, Users.email, RunGroups.id, RunGroups.location FROM Users JOIN UserRunLists ON UserRunLists.userId = Users.id JOIN RunGroups ON UserRunlists.runGroupId = RunGroups.id WHERE Users.id = :id ;'
+        selequize.query(query, {
+            type: sequelize.QueryTypes.SELECT
+        }).then(allRuns => {
+            console.log(allRuns);
+        });
+    });
+
+    app.get('/api/runsUsers/:id', function (req, res) {
+        var query = 'SELECT RunGroups.id, RunGroups.location, Users.id, Users.name FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunlists.userId = Users.id WHERE RunGroups.id = :id ;'
+        selequize.query(query, {
+            type: sequelize.QueryTypes.SELECT
+        }).then(allRunners => {
+            console.log(allRunners);
         });
     });
 

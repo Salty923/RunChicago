@@ -29,5 +29,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         }
     });
+
+    User.associate = function (models) {
+        User.hasMany(models.RunGroup, {
+            onDelete: "cascade"
+        })
+    };
+
     return User;
+
 };

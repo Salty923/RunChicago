@@ -108,6 +108,7 @@ module.exports = function (app) {
             'runGroupId': req.body.runGroupId
         }).then(function (result) {
             console.log(result.body);
+            res.json('/'); // what is this doing
         })
     });
 
@@ -125,7 +126,7 @@ module.exports = function (app) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
             console.log(`added runnersssss: ${req.body.newRunners}`);
-            res.json('/');
+            res.json('/'); // what is this doing
         });
     });
 

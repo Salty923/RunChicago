@@ -417,16 +417,16 @@
             alert($(this).data('val'));
             
             // not sure how to grab numRun
-            var newRunners = numRun++;
+            var newRunners = numRun+1;
 
             console.log(numRun);
             // send the PUT request
             $.ajax('/api/numRun/' + id, {
                 type: 'PUT',
-                data: newRunners
+                data: { newRunners }
             }).then(
                 function() {
-                    console.log('added runner');
+                    console.log('added');
                     //location.reload(); 
                     // to get an updated list
                 }

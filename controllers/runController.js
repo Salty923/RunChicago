@@ -38,7 +38,7 @@ module.exports = function (app) {
     app.put("/api/numRun/:id", function (req, res) {
         db.RunGroup.update(
             {
-                numRun: req.params.body
+                numRun: req.body.newRunners
             }, {
                 where: {
                     id: req.params.id
@@ -46,7 +46,7 @@ module.exports = function (app) {
             }).then(function (result) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
-            console.log(`added runner: ${result}`);
+            console.log(`added runnersssss: ${req.body.newRunners}`);
             res.json('/');
         });
     });

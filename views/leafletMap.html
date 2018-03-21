@@ -20,6 +20,8 @@
     <div id="mapid"></div>
 </body>
 <script>
+    let currentURL = window.location.origin;
+
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -46,6 +48,34 @@
     var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
     marker.bindPopup("<b>Hello, world!</b><br>You are here").openPopup();
 
+            $.post(currentURL + '/api/map', function(data) {
+
+                console.log(data);
+                console.log(data[0].location);
+                var runGroups = data;
+                
+            });
+
+    // google API to change zip codes to long/lat
+
+    var googleMapsApiKey= 'AIzaSyDTQu1tWssDBJYxtf0mIWkm4pXcqwVLfac'
+    
+    var googleMapsQueryUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords.latitude +','+ position.coords.longitude+'&key=' + googleMapsApiKey;
+    
+    console.log(googleMapsQueryUrl);
+    
+    $.ajax({
+        url: googleMapsQueryUrl,
+        method: "GET"
+    })
+    .done(function(response){
+        console.log(response.results[0].address_components[7].long_name);
+        yourZip= response.results[0].address_components[7].long_name;
+        getEvent();
+    
+    });
+
     }
 </script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </html>

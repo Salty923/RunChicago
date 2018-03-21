@@ -9,11 +9,23 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, '../views/index.html'));
     });
 
+    app.get('/api/map', function (req, res) {
+        res.sendFile(path.join(__dirname, '../views/leafletMap.html'))
+    });
+
     app.post('/api/runlist', function (req, res) {
         db.RunGroup.findAll({
             //space is just for my own readability
         }).then(function (result) {
             console.log(result);
+            res.json(result);
+        });
+    });
+
+    app.post('/api/map', function (req, res) {
+        db.RunGroup.findAll({
+
+        }).then(function (result) {
             res.json(result);
         });
     });

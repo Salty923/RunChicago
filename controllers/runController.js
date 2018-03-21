@@ -38,7 +38,7 @@ module.exports = function (app) {
     app.put("/api/numRun/:id", function (req, res) {
         db.RunGroup.update(
             {
-                numRun: req.body.data
+                numRun: req.params.body
             }, {
                 where: {
                     id: req.params.id

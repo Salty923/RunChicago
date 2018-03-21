@@ -102,7 +102,7 @@ module.exports = function (app) {
 
 
     app.post('/api/userRunList', function (req, res) {
-        console.log(req.body);
+
         db.UserRunList.create({
             'userId': req.body.userId,
             'runGroupId': req.body.runGroupId

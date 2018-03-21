@@ -35,10 +35,10 @@ module.exports = function (app) {
     });
 
     // put route -> back to index
-    app.put("api/numRun/:id", function (req, res) {
+    app.put("/api/numRun/:id", function (req, res) {
         db.RunGroup.update(
             {
-                numRun: request.params.newRunners
+                numRun: req.body.data
             }, {
                 where: {
                     id: req.params.id
@@ -46,7 +46,7 @@ module.exports = function (app) {
             }).then(function (result) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
-            console.log(result);
+            console.log(`added runner: ${result}`);
             res.json('/');
         });
     });

@@ -421,7 +421,7 @@
 
             console.log(numRun);
             // send the PUT request
-            $.ajax('api/numRun/' + id, {
+            $.ajax('/api/numRun/' + id, {
                 type: 'PUT',
                 data: newRunners
             }).then(

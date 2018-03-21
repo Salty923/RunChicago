@@ -45,3 +45,7 @@
 #team{
     min-height: 1000px;
 }
+
+.joined{
+    background: blue;
+}

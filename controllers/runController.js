@@ -1,5 +1,5 @@
 // importing models to use their database functions
-var db = require('../models/')
+var db = require('../models/');
 var path = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
@@ -12,11 +12,43 @@ if (config.use_env_variable) {
     var sequelize = new Sequelize(config.database, config.username, config.password, config);
   }
 
+var passport = require('../config/passport');
+
 // remember to change file names once updated info is available
 module.exports = function (app) {
+    app.post("/api/signup", function(req, res) {
+        console.log(req.body);
+        db.User.create({
+          email: req.body.email,
+          password: req.body.password
+        }).then(function() {
+            res.json("/success")
+        //   res.redirect(307, "/api/login");
+        }).catch(function(err) {
+          console.log(err);
+          res.json(err);
+          // res.status(422).json(err.errors[0].message);
+        });
+      });
+      
+    app.post("/api/login", function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+          if (err) { return next(err); }
+          if (!user) { return res.send('/fail'); }
+          req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            // return res.redirect('/users/' + user.username);
+            return res.json("/success");
+          });
+        })(req, res, next);
+      });
 
     app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '../views/index.html'));
+    });
+
+    app.get('/api/map', function (req, res) {
+        res.sendFile(path.join(__dirname, '../views/leafletMap.html'))
     });
 
     app.post('/api/runlist', function (req, res) {
@@ -24,6 +56,14 @@ module.exports = function (app) {
             //space is just for my own readability
         }).then(function (result) {
             console.log(result);
+            res.json(result);
+        });
+    });
+
+    app.post('/api/map', function (req, res) {
+        db.RunGroup.findAll({
+
+        }).then(function (result) {
             res.json(result);
         });
     });
@@ -71,16 +111,18 @@ module.exports = function (app) {
 
     // put route -> back to index
     app.put("/api/numRun/:id", function (req, res) {
-        db.RunGroup.update({
-            numRun: request.params.newRunners
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (result) {
+
+        db.RunGroup.update(
+            {
+                numRun: req.body.newRunners
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(function (result) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
-            console.log(result);
+            console.log(`added runnersssss: ${req.body.newRunners}`);
             res.json('/');
         });
     });

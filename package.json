@@ -9,7 +9,9 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "passport-facebook": "^2.1.1",
+    "bcrypt-nodejs": "0.0.3",
     "path": "^0.12.7",
     "sequelize": "^4.36.1"
   },

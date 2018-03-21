@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+app.use(bodyParser.json());
+
 // // setting up handlebars in case we decide to use it
 // var exphbs = require('express-handlebars');
 // app.engine('handlebars', exphbs({

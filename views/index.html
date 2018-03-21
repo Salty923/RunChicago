@@ -100,21 +100,21 @@
                   <div id="signup">   
                     <h1 class = "sign-up">Sign Up for Free</h1>
                     
-                    <form action="/" method="post">
+                    <form class = "signup">
                     
                     <div class="top-row">
                       <div class="field-wrap">
                         <label>
                           First Name<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" />
+                        <input id="firstName-input" type="text" required autocomplete="off" />
                       </div>
                   
                       <div class="field-wrap">
                         <label>
                           Last Name<span class="req">*</span>
                         </label>
-                        <input type="text"required autocomplete="off"/>
+                        <input id="lastName-input" type="text"required autocomplete="off"/>
                       </div>
                     </div>
           
@@ -122,14 +122,14 @@
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input type="email"required autocomplete="off"/>
+                      <input id="email-input" type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Set A Password<span class="req">*</span>
                       </label>
-                      <input type="password"required autocomplete="off"/>
+                      <input id="password-input" type="password"required autocomplete="off"/>
                     </div>
                     
                     <button type="submit" class="button button-block get-started"/>Get Started</button>
@@ -141,20 +141,20 @@
                   <div id="login">   
                     <h1 class = "sign-up">Welcome Back!</h1>
                     
-                    <form action="/" method="post">
+                    <form class="login-form">
                     
                       <div class="field-wrap">
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input type="email"required autocomplete="off"/>
+                      <input id="login-email" type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Password<span class="req">*</span>
                       </label>
-                      <input type="password"required autocomplete="off"/>
+                      <input id="login-password" type="password"required autocomplete="off"/>
                     </div>
                     
                     <p class="forgot"><a href="#">Forgot Password?</a></p>
@@ -371,6 +371,8 @@
         <script src="assets/js/runchi.js"></script>
         <!-- <script src="assets/js/findRunMap.js"></script> -->
         <script src="assets/js/login.js"></script>
+        <script src="assets/js/Login2.js"></script>
+        <script src="assets/js/signUp.js"></script>
 
     
     <script>

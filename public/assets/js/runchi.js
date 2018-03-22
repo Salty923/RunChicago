@@ -7,7 +7,6 @@
             time: $('#time').val().trim(),
             address: $('#addr').val().trim(),
             pace: $('#pace').val().trim(),
-            message: $('#message').val().trim()
         };
         
 
@@ -22,7 +21,6 @@
         $('#time').val('');
         $('#addr').val('');
         $('#pace').val('');
-        $('#message').val('');
 
         
     });

@@ -250,26 +250,38 @@
                                 <input id="pace" class="input100" type="text" name="pace" placeholder="Pace">
                                 <span class="focus-input100"></span>
                             </div>
-                            
-                            <div class="wrap-input100">
-                                <input id="message" class="input100" type="text" name="pace" placeholder="Message">
-                                <span class="focus-input100"></span>
-                            </div>
-                            
-                            
+                            <!-- SUBMIT BUTTON FOR RUN GROUP -->
                             <div class="container-contact100-form-btn">
                                 <button id="submit-run" class="contact100-form-btn">
                                     Submit
                                 </button>
                             </div>
                         </div>
-                    </div>
-                    
-                
-                        
+                    </div>            
                 </form>
             </div>
         </section>
+
+        <!-- MODAL FOR MAPS -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--team-->
         <section class="bg-white" id="team">
@@ -415,10 +427,17 @@
 
         $('body').on('click', '.join',function () {
             // id of the run group
+            $(this).attr({
+                'data-target': '#exampleModalCenter',
+                'data-toggle': 'modal'
+            });
             var id = $(this).data('val');
-            $(this).toggleClass('joined, btn-warning');
+            $(this).toggleClass('joined, btn-info');
             $(this).toggleClass('join, btn-success');
             $(this).html('Lets Run!');
+            
+            
+
             
             var newRunners = numRun+1;
 

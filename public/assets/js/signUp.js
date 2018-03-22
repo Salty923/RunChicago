@@ -25,6 +25,7 @@ $(document).ready(function() {
       lastName.val("");
       emailInput.val("");
       passwordInput.val("");
+     
     });
   
     // Does a post to the signup route. If succesful, we are redirected to the members page
@@ -37,6 +38,7 @@ $(document).ready(function() {
         password: password
       }).then(function(data) {
         window.location.replace(data);
+        $('.signForm').remove();
         // If there's an error, handle it by throwing up a boostrap alert
       }).catch(handleLoginErr);
     }

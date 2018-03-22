@@ -11,6 +11,8 @@ $(document).ready(function() {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
+      
+
   
       if (!userData.email || !userData.password) {
         return;
@@ -30,6 +32,8 @@ $(document).ready(function() {
       }).then(function(data) {
         // window.location.replace(data);
         console.log(data);
+        $('.signForm').remove();
+        $('.move').toggleClass('slider');
         // If there's an error, handle it by throwing up a boostrap alert
       }).catch(handleLoginErr);
     }

@@ -2,48 +2,54 @@
 var db = require('../models/');
 var path = require('path');
 var Sequelize = require('sequelize');
-var basename  = path.basename(__filename);
-var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config/config.json')[env];
+var basename = path.basename(__filename);
+var env = process.env.NODE_ENV || 'development';
+var config = require(__dirname + '/../config/config.json')[env];
 
 if (config.use_env_variable) {
     var sequelize = new Sequelize(process.env[config.use_env_variable], config);
-  } else {
+} else {
     var sequelize = new Sequelize(config.database, config.username, config.password, config);
-  }
+}
 
 var passport = require('../config/passport');
 
 // remember to change file names once updated info is available
 module.exports = function (app) {
-    app.post("/api/signup", function(req, res) {
+    app.post("/api/signup", function (req, res) {
         console.log(req.body);
         db.User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-          email: req.body.email,
-          password: req.body.password
-        }).then(function() {
+            email: req.body.email,
+            password: req.body.password
+        }).then(function () {
             res.json("/success")
-        //   res.redirect(307, "/api/login");
-        }).catch(function(err) {
-          console.log(err);
-          res.json(err);
-          // res.status(422).json(err.errors[0].message);
+            //   res.redirect(307, "/api/login");
+        }).catch(function (err) {
+            console.log(err);
+            res.json(err);
+            // res.status(422).json(err.errors[0].message);
         });
-      });
-      
-    app.post("/api/login", function(req, res, next) {
-        passport.authenticate('local', function(err, user, info) {
-          if (err) { return next(err); }
-          if (!user) { return res.send('/fail'); }
-          req.logIn(user, function(err) {
-            if (err) { return next(err); }
-            // return res.redirect('/users/' + user.username);
-            return res.json("/success");
-          });
+    });
+
+    app.post("/api/login", function (req, res, next) {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.send('/fail');
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                // return res.redirect('/users/' + user.username);
+                return res.json("/success");
+            });
         })(req, res, next);
-      });
+    });
 
     app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '../views/index.html'));
@@ -100,7 +106,8 @@ module.exports = function (app) {
         })
     });
 
-
+    // route to push the user id and run id to a table in order
+    // to utilize our join queries below
     app.post('/api/userRunList', function (req, res) {
 
         db.UserRunList.create({
@@ -115,14 +122,13 @@ module.exports = function (app) {
     // put route -> back to index
     app.put("/api/numRun/:id", function (req, res) {
 
-        db.RunGroup.update(
-            {
-                numRun: req.body.newRunners
-            }, {
-                where: {
-                    id: req.params.id
-                }
-            }).then(function (result) {
+        db.RunGroup.update({
+            numRun: req.body.newRunners
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (result) {
             // wrapper for orm.js that using MySQL update callback will return a log to console,
             // render back to index with handle
             console.log(`added runnersssss: ${req.body.newRunners}`);
@@ -130,6 +136,7 @@ module.exports = function (app) {
         });
     });
 
+    // route to get all the runs that a user has signed up for
     app.get('/api/usersRuns/:id', function (req, res) {
         var query = `SELECT RunGroups.id, RunGroups.location, RunGroups.level, RunGroups.runType, RunGroups.distance, RunGroups.pace, RunGroups.numRun FROM Users JOIN UserRunLists ON UserRunLists.userId = Users.id JOIN RunGroups ON UserRunlists.runGroupId = RunGroups.id WHERE Users.id = ${req.params.id} ;`
         sequelize.query(query, {
@@ -139,6 +146,7 @@ module.exports = function (app) {
         });
     });
 
+    // route to return all the users signed up for a run group
     app.get('/api/runsUsers/:id', function (req, res) {
         var query = `SELECT Users.id, Users.firstName, Users.LastName, Users.email, Users.points FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunlists.userId = Users.id WHERE RunGroups.id = ${req.params.id} ;`
         sequelize.query(query, {
@@ -151,5 +159,17 @@ module.exports = function (app) {
     app.get('/success', function (req, res) {
         res.redirect('/');
     });
+
+    // route to return the id of a user based on email input
+    app.get('/api/getUserInfo/:email', function (req, res) {
+        db.User.findOne({
+            where: {email: `${req.params.email}`},
+            attributes: ['id', 'firstName']
+        }).then(function (result) {
+            console.log("Retrieved user information");
+            res.json(result);
+        });
+    });
+
 
 }

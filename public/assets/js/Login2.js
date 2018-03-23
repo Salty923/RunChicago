@@ -21,7 +21,12 @@ $(document).ready(function () {
     signUpUser(userData.email, userData.password);
     emailInput.val("");
     passwordInput.val("");
+
+    // store first name and id to local storage
+    getUserInfo();
   });
+
+
 
   // Does a post to the signup route. If succesful, we are redirected to the members page
   // Otherwise we log any errors
@@ -43,3 +48,22 @@ $(document).ready(function () {
     $("#alert").fadeIn(500);
   }
 });
+
+
+
+function getUserInfo() {
+  $.get(`/api/getUserInfo/${emailInput}`, function (data, status) {
+    console.log(`Status: ${status}`);
+    console.log(`Testing data id response from db: ${data.id}`);
+
+    if (localStorage) {
+
+      // Store user's ID and first name to local storage
+      localStorage.setItem("userId", `${data.id}`);
+      localStorage.setItem("firstName", `${data.firstName}`)
+
+    } else {
+      alert("Sorry, your browser does not support local storage.");
+    }
+  });
+};

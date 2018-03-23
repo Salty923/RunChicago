@@ -196,6 +196,7 @@
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Runners</th>
+                                    <th>Meet Group</th>
                                     <th>Join!</th>
                                 </tr>
                             </thead>
@@ -269,20 +270,16 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="text-center modal-title" id="exampleModalLongTitle">Run Details</h3>
+                        <h3 class="text-center modal-title" id="exampleModalLongTitle">Run Location</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <h4 class="text-center">Run Location</h4>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <h4 class="text-center">Click For Details</h4>
                                 <div id="findMap"></div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <h4 class="text-center">Runners</h4>
-                                <div id="runList"></div>
                             </div>
                         </div>   
                     </div>
@@ -404,7 +401,7 @@
             
             $.post(currentURL + '/api/runlist', function(data) {
                 //var data = JSON.parse(data);
-                console.log(data);
+                //console.log(data);
                 var runGroups = data;
                 var runList = $('#tableBody');
 
@@ -416,7 +413,8 @@
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
                     numRun = runGroups[i].numRun;
-                    var runShow = $(`<td>${runGroups[i].numRun}</td>`)
+                    var runShow = $(`<td>${runGroups[i].numRun}</td>`);
+                    var meet = $(`<td><div class='dropdown'><button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profiles</button><div class='dropdown-menu showRunners'></div></div></td>`);
                     var button = $(`<td><button data-time=${runGroups[i].time} data-date=${runGroups[i].date} data-val='${id}' data-group=${runGroups[i].groupName} data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
@@ -425,11 +423,21 @@
                     groupRow.append(date);
                     groupRow.append(time);
                     groupRow.append(runShow);
+                    groupRow.append(meet);
                     groupRow.append(button);
 
-                    
-                    console.log(numRun);
+                }
+            });
 
+            var getRequestId = localStorage.getItem("runId");
+
+            $.get("/api/runsUsers/" + getRequestId, function (data, status) {
+                //console.log(getRequestId);
+                //console.log(status);
+                console.log(data);
+                for (let j = 0; j < data.length; j++) {
+                    let runnerName = `<a class='dropdown-item'>${data[j].firstName}</a>`;
+                    $('.showRunners').append(runnerName);
                 }
             });
 
@@ -444,21 +452,21 @@
             var id = $(this).data('val');
             $(this).removeClass('join, btn-success');
             $(this).addClass('joined, btn-info');
-            $(this).html('Run Details');
+            $(this).html('Map');
             
             localStorage.setItem("runId", id);
 
             
             var newRunners = numRun+1;
 
-            console.log(numRun);
+            //console.log(numRun);
             //send the PUT request
             $.ajax('/api/numRun/' + id, {
                 type: 'PUT',
                 data: { newRunners }
             }).then(
                 function() {
-                    console.log('added');
+                    //console.log('added');
                     //location.reload(); 
                     // to get an updated list
                 }
@@ -477,6 +485,8 @@
                     // console.log('push user ID and run ID');
                 }
             );
+
+            
 
         })
 

@@ -84,3 +84,13 @@ body .modal-dialog{
    max-width:700px;
 }
 
+.teamRun{
+    color: green;
+}
+
+.dropdown-menu {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+

@@ -16,7 +16,7 @@ $(document).ready(function () {
             if (status == google.maps.GeocoderStatus.OK) {
 
                 //console.log('geocoder results:');
-                console.dir(results);
+               // console.dir(results);
 
                 var mapOptions = {
                     zoom: 16,
@@ -50,6 +50,7 @@ $(document).ready(function () {
                     `<h6><b>Run Group - ${group}</b></h6>` +
                     `<h6><b>Run Date - ${date}</b></h6>` +
                     `<h6><b>Run Time - ${time}</b></h6>` +
+                    `<h6><b>Run Time - ${address}</b></h6>` +
                     '</div>' +
                     '</div>';
                 var infowindow = new google.maps.InfoWindow({
@@ -59,13 +60,7 @@ $(document).ready(function () {
                     infowindow.open(map, marker);
                 });
 
-                var getRequestId = localStorage.getItem("runId");
-
-                $.get("/api/runsUsers/" + getRequestId, function (data, status) {
-                    console.log(getRequestId);
-                    console.log(status);
-                    console.log(data);
-                });
+                
 
 
             } else {

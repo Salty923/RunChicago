@@ -23,7 +23,7 @@
 }
 
 #findMap {
-  /* height: 600px; */
+  height: 400px;
   width: 100%;
   margin-bottom: 30px;
   backface-visibility: yellow;

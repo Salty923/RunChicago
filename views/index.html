@@ -455,7 +455,7 @@
             )
 
             var runList = {
-                userID: 1, // need to grab user ID here. 
+                userId: parseInt(localStorage.getItem("userId")), // need to grab user ID here. 
                 runGroupId: id
             };
 
@@ -464,7 +464,7 @@
                 data: runList
             }).then(
                 function() {
-                    console.log('push user ID and run ID');
+                    // console.log('push user ID and run ID');
                 }
             );
 

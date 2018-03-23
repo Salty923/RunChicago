@@ -1,5 +1,5 @@
 var marker;
-var address;
+var address = 'munster,in'
 
 function initialize() {
     geocoder = new google.maps.Geocoder();
@@ -43,7 +43,7 @@ function pinDrop() {
             //map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: map,
-                title: "Lost Dog",
+                title: "",
                 label: "RUN",
                 position: results[0].geometry.location,
                 draggable: false,
@@ -77,3 +77,5 @@ function pinDrop() {
         };
     });
 };
+
+pinDrop();

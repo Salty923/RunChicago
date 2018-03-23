@@ -59,6 +59,14 @@ $(document).ready(function () {
                     infowindow.open(map, marker);
                 });
 
+                var getRequestId = localStorage.getItem("runId");
+
+                $.get("/api/runsUsers/" + getRequestId, function (data, status) {
+                    console.log(getRequestId);
+                    console.log(status);
+                    console.log(data);
+                });
+
 
             } else {
                 alert('Please try a different address.');

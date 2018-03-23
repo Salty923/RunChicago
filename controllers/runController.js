@@ -59,7 +59,7 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, '../views/leafletMap.html'))
     });
 
-    app.post('/api/runlist', function (req, res) {
+    app.get('/api/runlist', function (req, res) {
         db.RunGroup.findAll({
             //space is just for my own readability
         }).then(function (result) {

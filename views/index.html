@@ -391,7 +391,6 @@
         <script src="assets/js/scripts.js"></script>
         <script src="assets/js/auto.js"></script>
         <script src="assets/js/runchi.js"></script>
-        <!-- <script src="assets/js/findRunMap.js"></script> -->
         <script src="assets/js/mapModal.js"></script>
         <script src="assets/js/login.js"></script>
         <script src="assets/js/Login2.js"></script>
@@ -418,7 +417,7 @@
                     var time = $(`<td>${runGroups[i].time}</td>`);
                     numRun = runGroups[i].numRun;
                     var runShow = $(`<td>${runGroups[i].numRun}</td>`)
-                    var button = $(`<td><button data-val='${id}' data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
+                    var button = $(`<td><button data-time=${runGroups[i].time} data-date=${runGroups[i].date} data-val='${id}' data-group=${runGroups[i].groupName} data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
                     groupRow.append(groupName);

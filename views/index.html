@@ -440,7 +440,7 @@
                 $.get(currentURL + "/api/runsUsers/" + id, function (data, status) {
                 console.log(id);
                 //console.log(status);
-                console.log(data);
+                console.log(`testing this ${data}`);
                 for (let j = 0; j < data.length; j++) {
                     let runnerName = `<a class='dropdown-item'>${data[j].firstName}</a>`;
                     $('.showRunners').append(runnerName);

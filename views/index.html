@@ -196,8 +196,8 @@
                                     <th>Place</th>
                                     <th>Date</th>
                                     <th>Time</th>
+                                    <th>Pace</th>
                                     <th>Runners</th>
-                                    <th>Meet Group</th>
                                     <th>Join!</th>
                                 </tr>
                             </thead>
@@ -414,6 +414,7 @@
                     var runLocation = $(`<td class="location">${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
+                    var pace = $(`<td>${runGroups[i].pace}</td>`);
                     numRun = runGroups[i].numRun;
                     var runShow = $(`<td>${runGroups[i].numRun}</td>`);
                     var meet = $(`<td><div class='dropdown'><button data-val='${id}' type="button" class="profile btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profiles</button><div class='dropdown-menu showRunners'></div></div></td>`);
@@ -423,6 +424,7 @@
                     groupRow.append(groupName);
                     groupRow.append(runLocation);
                     groupRow.append(date);
+                    groupRow.append(time);
                     groupRow.append(time);
                     groupRow.append(runShow);
                     groupRow.append(meet);

@@ -94,3 +94,15 @@ body .modal-dialog{
     overflow-x: hidden;
 }
 
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 30%;
+  height: 45px;
+  font-size: 20px;
+  padding: 12px 20px 12px 40px;
+  border: 2px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  color: gray;
+}

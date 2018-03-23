@@ -226,8 +226,9 @@
                             <span class="contact100-form-title text-center">
                                 Create a Run
                             </span>
-                            <div class="wrap-input100 validate-input" data-validate="Please enter your username">
-                                <input id="user" class="input100" type="text" name="name" placeholder="UserName">
+
+                            <div class="wrap-input100 validate-input" data-validate="Please enter your group">
+                                <input id="user" class="input100" type="user" name="user" placeholder="Group">
                                 <span class="focus-input100"></span>
                             </div>
                             
@@ -401,7 +402,7 @@
                 for (let i = 0; i < runGroups.length; i++) {
                     var id = runGroups[i].id;
                     var groupRow = $(`<tr></tr>`);
-                    var groupName = $(`<td>${runGroups[i].level}</td>`);
+                    var groupName = $(`<td>${runGroups[i].groupName}</td>`);
                     var runLocation = $(`<td>${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);

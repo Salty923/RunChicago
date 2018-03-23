@@ -1,8 +1,8 @@
 $(document).ready(function () {
   // Getting references to our form and input
   var signUpForm = $(".log-in");
-  var emailInput = $("input#login-email");
-  var passwordInput = $("input#login-password");
+  var emailInput = $("#login-email");
+  var passwordInput = $("#login-password");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("click", function (event) {
@@ -12,6 +12,7 @@ $(document).ready(function () {
       password: passwordInput.val().trim()
     };
 
+    
 
 
     if (!userData.email || !userData.password) {
@@ -19,11 +20,42 @@ $(document).ready(function () {
     }
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
 
     // store first name and id to local storage
     getUserInfo();
+
+  
+    emailInput.val("");
+    passwordInput.val("");
+
+    
+
+
+
+
+    function getUserInfo() {
+      var emailQuery = emailInput.val().trim();
+      console.log("Test 1" + emailInput.val().trim());
+      console.log("Test 2" + emailInput.val());
+      console.log(emailInput);
+       console.log("Email Input:" + emailQuery);
+      $.get("/api/getUserInfo/" + emailQuery, function (data, status) {
+        console.log(`Status: ${status}`);
+       
+        console.log(data);
+        //console.log(`Testing data id response from db: ${data.id}`);
+
+        if (localStorage) {
+
+          // Store user's ID and first name to local storage
+          localStorage.setItem("userId", `${data.id}`);
+          localStorage.setItem("firstName", `${data.firstName}`)
+
+        } else {
+          alert("Sorry, your browser does not support local storage.");
+        }
+      });
+    };
   });
 
 
@@ -48,22 +80,3 @@ $(document).ready(function () {
     $("#alert").fadeIn(500);
   }
 });
-
-
-
-function getUserInfo() {
-  $.get(`/api/getUserInfo/${emailInput}`, function (data, status) {
-    console.log(`Status: ${status}`);
-    console.log(`Testing data id response from db: ${data.id}`);
-
-    if (localStorage) {
-
-      // Store user's ID and first name to local storage
-      localStorage.setItem("userId", `${data.id}`);
-      localStorage.setItem("firstName", `${data.firstName}`)
-
-    } else {
-      alert("Sorry, your browser does not support local storage.");
-    }
-  });
-};

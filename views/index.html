@@ -74,7 +74,7 @@
                     <li class="nav-item mr-3">
                         <a class="nav-link page-scroll" href="#contact">Contact</a>
                     </li>
-                </ul>
+                </ul>c
             </div>
         </nav>
 
@@ -88,6 +88,7 @@
                         <img class="move img-fluid mx-auto d-block nike-swoosh-main" src="assets/images/white-nike-swoosh.png"/>
                         <h2 class="move">runCHI</h2>
                         <h3 class="move">Find that Perfect Run.</h3>
+                        <!-- <h2 id="user">Welcome</h2> -->
                     </div>
                     <!-- sign up/login section -->
             <div class="signForm form half wow fadeIn ml-auto">
@@ -415,8 +416,8 @@
                     var time = $(`<td>${runGroups[i].time}</td>`);
                     numRun = runGroups[i].numRun;
                     var runShow = $(`<td>${runGroups[i].numRun}</td>`);
-                    var meet = $(`<td><div class='dropdown'><button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profiles</button><div class='dropdown-menu showRunners'></div></div></td>`);
-                    var button = $(`<td><button data-time=${runGroups[i].time} data-date=${runGroups[i].date} data-val='${id}' data-group=${runGroups[i].groupName} data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
+                    var meet = $(`<td><div class='dropdown'><button data-val='${id}' type="button" class="profile btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profiles</button><div class='dropdown-menu showRunners'></div></div></td>`);
+                    var button = $(`<td><button data-time='${runGroups[i].time}' data-date='${runGroups[i].date}' data-val='${id}' data-group='${runGroups[i].groupName}' data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
                     groupRow.append(groupName);
@@ -426,23 +427,32 @@
                     groupRow.append(runShow);
                     groupRow.append(meet);
                     groupRow.append(button);
+                    
 
                 }
             });
+          
 
-            var getRequestId = localStorage.getItem("runId");
+        });
 
-            $.get("/api/runsUsers/" + getRequestId, function (data, status) {
-                //console.log(getRequestId);
+        $('body').on('click', '.profile', function () {
+                let id = ($(this).data('val'));
+                $.get("/api/runsUsers/" + id, function (data, status) {
+                console.log(id);
                 //console.log(status);
-                //console.log(data);
+                console.log(data);
                 for (let j = 0; j < data.length; j++) {
                     let runnerName = `<a class='dropdown-item'>${data[j].firstName}</a>`;
                     $('.showRunners').append(runnerName);
+                    console.log(data[j].firstName);
                 }
-            });
+            })
+            //Get users in this Group
+            var getRequestId = localStorage.getItem("runId");
 
-        });
+            
+
+            });
 
         $('body').on('click', '.join',function () {
             // id of the run group

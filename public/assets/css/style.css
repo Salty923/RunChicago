@@ -106,3 +106,7 @@ body .modal-dialog{
   border-radius: 5px;
   color: gray;
 }
+
+#user{
+    opacity: 100;
+}

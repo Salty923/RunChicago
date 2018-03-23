@@ -401,7 +401,7 @@
             let currentURL = window.location.origin;
             let numRunners;
             
-            $.post(currentURL + '/api/runlist', function(data) {
+            $.get(currentURL + '/api/runlist', function(data) {
                 //var data = JSON.parse(data);
                 //console.log(data);
                 var runGroups = data;
@@ -437,7 +437,7 @@
 
         $('body').on('click', '.profile', function () {
                 let id = ($(this).data('val'));
-                $.get("/api/runsUsers/" + id, function (data, status) {
+                $.get(currentURL + "/api/runsUsers/" + id, function (data, status) {
                 console.log(id);
                 //console.log(status);
                 console.log(data);
@@ -472,7 +472,7 @@
 
             //console.log(numRun);
             //send the PUT request
-            $.ajax('/api/numRun/' + id, {
+            $.ajax(currentURL + '/api/numRun/' + id, {
                 type: 'PUT',
                 data: { newRunners }
             }).then(
@@ -488,7 +488,7 @@
                 runGroupId: id
             };
 
-            $.ajax('/api/userRunList', {
+            $.ajax(currentURL + '/api/userRunList', {
                 type: 'POST',
                 data: runList
             }).then(

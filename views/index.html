@@ -264,17 +264,27 @@
 
         <!-- MODAL FOR MAPS -->
         <!-- Modal -->
+        
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Run Location</h5>
+                        <h3 class="text-center modal-title" id="exampleModalLongTitle">Run Details</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="findMap"></div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-center">Run Location</h4>
+                                <div id="findMap"></div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-center">Runners</h4>
+                                <div id="runList"></div>
+                            </div>
+                        </div>   
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -381,7 +391,8 @@
         <script src="assets/js/scripts.js"></script>
         <script src="assets/js/auto.js"></script>
         <script src="assets/js/runchi.js"></script>
-        <script src="assets/js/findRunMap.js"></script>
+        <!-- <script src="assets/js/findRunMap.js"></script> -->
+        <script src="assets/js/mapModal.js"></script>
         <script src="assets/js/login.js"></script>
         <script src="assets/js/Login2.js"></script>
         <script src="assets/js/signUp.js"></script>
@@ -402,12 +413,12 @@
                     var id = runGroups[i].id;
                     var groupRow = $(`<tr></tr>`);
                     var groupName = $(`<td>${runGroups[i].groupName}</td>`);
-                    var runLocation = $(`<td>${runGroups[i].location}</td>`);
+                    var runLocation = $(`<td class="location">${runGroups[i].location}</td>`);
                     var date = $(`<td>${runGroups[i].date}</td>`);
                     var time = $(`<td>${runGroups[i].time}</td>`);
                     numRun = runGroups[i].numRun;
                     var runShow = $(`<td>${runGroups[i].numRun}</td>`)
-                    var button = $(`<td><button data-val='${id}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
+                    var button = $(`<td><button data-val='${id}' data-loc='${runGroups[i].location}' type="button" class="join btn btn-sm btn-success">Join</button></td>`);
 
                     runList.append(groupRow);
                     groupRow.append(groupName);
@@ -434,9 +445,9 @@
             var id = $(this).data('val');
             $(this).removeClass('join, btn-success');
             $(this).addClass('joined, btn-info');
-            $(this).html('Lets Run!');
+            $(this).html('Run Details');
             
-            
+           
 
             
             var newRunners = numRun+1;

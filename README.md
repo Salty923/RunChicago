@@ -18,7 +18,7 @@ Chicago runners run a variety of distances. runCHI offers a variety of run group
 
 ![chart2](/public/assets/images/chart2.png)
 
-**runCHI** is an application that allows users to add their own running group and/or join other running group(s) made by other users. Group runs list the place of the run, the date, the time and the other runners that are joining that specific run!
+**runCHI** is an application that allows users to add their own running group and/or join other running group(s) made by other users. Group runs list the place of the run, the date, the time and the other runners that are joining that specific run. 
 
 ![runCHI](/public/assets/images/runCHI.png)
 

@@ -79,11 +79,12 @@ module.exports = function (app) {
     app.post('/api/runs', function (req, res) {
         console.log(req.body);
         db.RunGroup.create({
+            "groupName": req.body.user,
             "date": req.body.date,
             'time': req.body.time,
-            'location': req.body.location,
-            'level': req.body.level,
-            'runType': req.body.runType,
+            'location': req.body.address,
+            'level': 'nothing',
+            'runType': 'nothing',
             'distance': 10,
             'pace': 'test',
             'recurringGroup': false

@@ -1,5 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     var RunGroup = sequelize.define("RunGroup", {
+        groupName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            len: [1, 100]
+        },
         date: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -9,19 +14,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             len: [1, 200]
-        },location: {
+        },
+        location: {
             type: DataTypes.STRING,
             allowNull: false,
-            len: [1, 200]
-        },
-        level: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            len: [1, 15],
-        },
-        runType: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
         distance: {
             type: DataTypes.INTEGER,
@@ -36,17 +32,9 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 1
         },
-        recurringGroup: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
         createdBy: {
             type: DataTypes.INTEGER,
             allowNull: true,
-        },
-        points: {
-            type: DataTypes.INTEGER,
-            allowNull: true
         }
     });
     return RunGroup;

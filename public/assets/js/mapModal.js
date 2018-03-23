@@ -50,7 +50,7 @@ $(document).ready(function () {
                     `<h6><b>Run Group - ${group}</b></h6>` +
                     `<h6><b>Run Date - ${date}</b></h6>` +
                     `<h6><b>Run Time - ${time}</b></h6>` +
-                    `<h6><b>Run Time - ${address}</b></h6>` +
+                    `<h6><b>Run Location - ${address}</b></h6>` +
                     '</div>' +
                     '</div>';
                 var infowindow = new google.maps.InfoWindow({

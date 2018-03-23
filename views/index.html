@@ -187,7 +187,6 @@
                 <div class="row">
                     
                     <div id="list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <!-- <div id="findMap"></div>
                         <div id="runList"></div> -->    
                         <table class="table table-hover table-striped">
                             <thead>
@@ -215,7 +214,7 @@
             </div>
         </section>
 
-        <!--pricing-->
+        <!--Create Run-->
         <section class="bg-light" id="pricing">
             
             <div class="container">
@@ -269,13 +268,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Run Location</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <div id="findMap"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -382,7 +381,7 @@
         <script src="assets/js/scripts.js"></script>
         <script src="assets/js/auto.js"></script>
         <script src="assets/js/runchi.js"></script>
-        <!-- <script src="assets/js/findRunMap.js"></script> -->
+        <script src="assets/js/findRunMap.js"></script>
         <script src="assets/js/login.js"></script>
         <script src="assets/js/Login2.js"></script>
         <script src="assets/js/signUp.js"></script>
@@ -433,8 +432,8 @@
                 'data-toggle': 'modal'
             });
             var id = $(this).data('val');
-            $(this).toggleClass('joined, btn-info');
-            $(this).toggleClass('join, btn-success');
+            $(this).removeClass('join, btn-success');
+            $(this).addClass('joined, btn-info');
             $(this).html('Lets Run!');
             
             

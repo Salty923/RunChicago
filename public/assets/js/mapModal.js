@@ -34,12 +34,11 @@ $(document).ready(function () {
 
                 map = new google.maps.Map(document.getElementById('findMap'), mapOptions);
                 
-                var image = 'https://d30y9cdsu7xlg0.cloudfront.net/png/248569-200.png'
+                var image = 'https://raw.githubusercontent.com/Salty923/RunChicago/master/public/assets/images/runnersmall.png'
                 //map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: map,
                     title: "Lets Run!",
-                    label: "Run",
                     position: results[0].geometry.location,
                     draggable: false,
                     icon: image,

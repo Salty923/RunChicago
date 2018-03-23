@@ -7,14 +7,16 @@
             time: $('#time').val().trim(),
             address: $('#addr').val().trim(),
             pace: $('#pace').val().trim(),
-        };
+        }
         
 
         // AJAX post data
         $.post('/api/runs', userData, function (data) {
             console.log("Run added");
             console.log(data);
-        });
+        }).then(function (){
+            location.reload();
+        })
         
         $('#user').val('');
         $('#date').val('');
@@ -23,4 +25,4 @@
         $('#pace').val('');
 
         
-    });
+    })

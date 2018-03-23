@@ -149,7 +149,7 @@ module.exports = function (app) {
 
     // route to return all the users signed up for a run group
     app.get('/api/runsUsers/:id', function (req, res) {
-        var query = `SELECT Users.id, Users.firstName, Users.LastName, Users.email FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunLists.userId = Users.id WHERE RunGroups.id = ${req.params.id} ;`
+        var query = `SELECT Users.id, Users.firstName, Users.LastName, Users.email, RunGroups.id FROM RunGroups JOIN UserRunLists ON UserRunLists.runGroupId = RunGroups.id JOIN Users ON UserRunLists.userId = Users.id WHERE RunGroups.id = ${req.params.id};`
         sequelize.query(query, {
             type: sequelize.QueryTypes.SELECT
         }).then(allRunners => {

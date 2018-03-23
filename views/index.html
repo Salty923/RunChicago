@@ -185,8 +185,8 @@
                 </div>
                 
                 <div class="row">
-                    
                     <div id="list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by location.." title="Type in a name">
                         <div id="runList"></div>    
                         <table class="table table-hover table-striped">
                             <thead>
@@ -392,6 +392,7 @@
         <script src="assets/js/login.js"></script>
         <script src="assets/js/Login2.js"></script>
         <script src="assets/js/signUp.js"></script>
+        <script src="assets/js/tableFilter.js"></script>
 
     
     <script>
@@ -434,7 +435,7 @@
             $.get("/api/runsUsers/" + getRequestId, function (data, status) {
                 //console.log(getRequestId);
                 //console.log(status);
-                console.log(data);
+                //console.log(data);
                 for (let j = 0; j < data.length; j++) {
                     let runnerName = `<a class='dropdown-item'>${data[j].firstName}</a>`;
                     $('.showRunners').append(runnerName);

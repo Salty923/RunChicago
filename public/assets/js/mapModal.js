@@ -38,8 +38,8 @@ $(document).ready(function () {
                 //map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: map,
-                    title: "Lost Dog",
-                    label: "Lost",
+                    title: "Lets Run!",
+                    label: "Run",
                     position: results[0].geometry.location,
                     draggable: false,
                     animation: google.maps.Animation.DROP

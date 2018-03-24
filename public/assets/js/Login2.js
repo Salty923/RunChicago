@@ -35,14 +35,14 @@ $(document).ready(function () {
 
     function getUserInfo() {
       var emailQuery = emailInput.val().trim();
-      console.log("Test 1" + emailInput.val().trim());
-      console.log("Test 2" + emailInput.val());
-      console.log(emailInput);
-       console.log("Email Input:" + emailQuery);
+     // console.log("Test 1" + emailInput.val().trim());
+     // console.log("Test 2" + emailInput.val());
+     // console.log(emailInput);
+      // console.log("Email Input:" + emailQuery);
       $.get("/api/getUserInfo/" + emailQuery, function (data, status) {
-        console.log(`Status: ${status}`);
+      //  console.log(`Status: ${status}`);
        
-        console.log(data);
+       // console.log(data);
         //console.log(`Testing data id response from db: ${data.id}`);
 
         if (localStorage) {

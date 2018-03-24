@@ -88,7 +88,7 @@
                         <img class="move img-fluid mx-auto d-block nike-swoosh-main" src="assets/images/white-nike-swoosh.png"/>
                         <h2 class="move">runCHI</h2>
                         <h3 class="move">Find that Perfect Run.</h3>
-                        <!-- <h2 id="user">Welcome</h2> -->
+                        <h2 id="welcome"></h2>
                     </div>
                     <!-- sign up/login section -->
             <div class="signForm form half wow fadeIn ml-auto">
@@ -133,7 +133,7 @@
                       <input id="password-input" type="password"required autocomplete="off"/>
                     </div>
                     
-                    <button type="submit" class="button button-block get-started"/>Get Started</button>
+                    <button type="submit" class="welcome button button-block get-started"/>Get Started</button>
                     
                     </form>
           
@@ -146,21 +146,21 @@
                     
                       <div class="field-wrap">
                       <label>
-                        Email Address<span class="req">*</span>
+                        <span class="req">*</span>
                       </label>
                       <input id="login-email" value="run@gmail.com" type="email"required autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
-                        Password<span class="req">*</span>
+                        <span class="req">*</span>
                       </label>
                       <input id="login-password" value="run" type="password"required autocomplete="off"/>
                     </div>
                     
                     <p class="forgot"><a href="#">Forgot Password?</a></p>
                     
-                    <button class="button button-block log-in"/>Log In</button>
+                    <button class="welcome button button-block log-in"/>Log In</button>
                     
                     </form>
           
@@ -435,7 +435,13 @@
             });
           
 
-        
+        $('.welcome').on('click',function () {
+            let welcomeName = $('#firstName-input');
+            $('#user').html(welcomeName);
+        })
+
+
+        ///////////////////////
 
         $('body').on('click', '.profile', function () {
                 let id = ($(this).data('val'));
